@@ -28,7 +28,7 @@ All activities will be stored and checked from here.
 
 * Clone the repository for first time use or anywhere you want to run the program or retrieve your code
 ```
-git clone https://github.com/milkylee/webdev.git
+git clone https://github.com/milkylee/advanced_webdev.git
 ```
 * Checkout to new branch refering to your activity name if branch is not yet available 
 ```
