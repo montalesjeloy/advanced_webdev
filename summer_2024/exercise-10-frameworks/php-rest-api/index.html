@@ -17,11 +17,8 @@
           <label>Search :</label>
           <input type="text" id="search" autocomplete="off">
         </div>
-
-
       </td>
     </tr>
-
     <tr>
       <td id="table-form">
         <form id="addForm">
@@ -31,8 +28,6 @@
           <input type="submit" id="save-button" value="Save">
         </form>
       </td>
-
-
     </tr>
     <tr>
       <td id="table-data">
@@ -51,8 +46,6 @@
         </table>
       </td>
     </tr>
-
-
   </table>
 
   <div id="error-message" class="messages"></div>
@@ -94,25 +87,21 @@
 $(document).ready(function(){
 //Fetch All Records
 function loadTable(){
-  $("#load-table").html(""); //starting me empty ho jae
+  $("#load-table").html(""); //starting empty
 
   $.ajax({
   url: "http://localhost/php-rest-api/api-fetch-all.php",
-  type: "GET",
+  type: "______",
   success:function(data){
-    //console.log(data);
     if(data.status==false){ //read json key
-      $("#load-table").append("<tr><td colspan='6'><h2>"+data.message+"</h2></td></tr>");
+      $("____________").append("<tr><td colspan='6'><h2>"+data.message+"</h2></td></tr>");
     }else{
       $.each(data,function(key,value){
-      //console.log(key+ " "+value.id);
-      //console.table(data);
-     
       $("#load-table").append("<tr>"+
         "<td>"+value.id+"</td>"+
         "<td>"+value.student_name+"</td>"+
         "<td>"+value.age+"</td>"+
-        "<td>"+value.city+"</td>"+
+        "<td>"+value._____________+"</td>"+
         "<td class='center'><button class='edit-btn' data-eid='"+value.id+"'>Edit</button></td>"+
         "<td class='center'><button class='delete-btn' data-id='"+value.id+"'>Delete</button></td>"+
         "</tr>");
@@ -127,14 +116,14 @@ loadTable();
 //Show Success or Error message
  function Message(message,status){
 if(status==true){
- $("#success-message").html(message).slideDown();
+ $("____________").html(message).slideDown();
  $("#error-message").slideUp();
  setTimeout(function(){
   $("#success-message").slideUp();
  },4000);
 
 }else if(status==false){
-  $("#error-message").html(message).slideDown();
+  $("_____________").html(message).slideDown();
   $("#success-message").slideUp();
   setTimeout(function(){
   $("#error-message").slideUp();
@@ -253,17 +242,16 @@ function JsonData(targetForm){
   $("#edit-submit").on("click",function(e){
   e.preventDefault(); //Refresh by default functionality off
   var jsonobj=JsonData("#edit-form"); //get json data using call function 
-  //console.log(jsonobj);
   if(jsonobj==false){
     Message("All Fields Are Required",false); //call message function
   }else{
     $.ajax({
       url: "http://localhost/php-rest-api/api-update.php",
-      type: "POST",
+      type: "____________",
       data: jsonobj,
       success:function(data){
        Message(data.message,data.status); 
-         if(data.status==true){
+         if(data.status== _____________){
           $("#modal").hide(); 
           loadTable(); //table reload
           }
@@ -273,13 +261,13 @@ function JsonData(targetForm){
   });
 
 
-  //Live Search Record =Key Up Event Call==URL se append krkr bhejegy data
+  //Live Search Record =Key Up Event Call==URL
   $("#search").on("keyup",function(){
     $("#load-table").html("");
     var search_term=$(this).val();
     $.ajax({
-      url: "http://localhost/php-rest-api/api-search-get.php?search="+ search_term,
-      type: "GET",
+      url: "http://localhost/php-rest-api/api-search-get.php?search="+ ______________,
+      type: "__________",
       success: function(data){
         if(data.status==false){
       $("#load-table").append("<tr><td colspan='6'><h2>"+data.message+"</h2></td></tr>");
@@ -290,7 +278,7 @@ function JsonData(targetForm){
       $("#load-table").append("<tr>"+
         "<td>"+value.id+"</td>"+
         "<td>"+value.student_name+"</td>"+
-        "<td>"+value.age+"</td>"+
+        "<td>"+value.________+"</td>"+
         "<td>"+value.city+"</td>"+
         "<td class='center'><button class='edit-btn' data-eid='"+value.id+"'>Edit</button></td>"+
         "<td class='center'><button class='delete-btn' data-id='"+value.id+"'>Delete</button></td>"+

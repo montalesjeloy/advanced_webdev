@@ -19,17 +19,17 @@ $data=json_decode(file_get_contents("php://input"),TRUE);
 
 $name=$data['sname'];
 $age=$data['sage'];
-$city=$data['scity'];
+$city=$data['_________'];
 
-include "config.php";
+$conn=_________("localhost","root","","test") or die("Connection failed");
 
-$sql="INSERT INTO students(student_name,age,city) VALUES('{$name}',{$age},'{$city}')";
+$sql="INSERT INTO students(student_name,age,city) VALUES(__________________)";
 
 
-if(mysqli_query($conn,$sql)){
+if(mysqli_query($_______,$sql)){
 	echo json_encode(array("message"=> "Student Record Inserted","status"=> TRUE));
 }else{
-	echo json_encode(array("message"=> "Student Record Can't Inserted","status"=> FALSE));
+	echo json_encode(array("message"=> "Student Record Can't Be Inserted","status"=> FALSE));
 }
 ?>
 
